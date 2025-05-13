@@ -1,0 +1,301 @@
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f0f4f8;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Хедер + фон + плавность */
+.header {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-image 1s ease-in-out;
+    padding: 20px;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+.header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+}
+.header h1.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.header p.subtitle {
+    font-size: 1.2em;
+}
+
+/* Стрелка прокрутки */
+.scroll-down {
+    margin-top: 20px;
+    font-size: 2em;
+    cursor: pointer;
+    color: #fff;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Навигация */
+.nav {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+}
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    transition: background 0.3s, transform 0.3s;
+}
+.nav a:hover, .nav a.active {
+    background: rgba(255,255,255,0.4);
+    transform: scale(1.05);
+}
+
+/* Основной контент */
+.main {
+    padding: 40px 20px;
+}
+.section {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Заголовки разделов */
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+}
+
+/* Контейнеры */
+.container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Текстовые блоки */
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.text-content {
+    flex: 1 1 60%;
+}
+.image-slider {
+    flex: 1 1 35%;
+    position: relative;
+}
+.slider-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.slider-container img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.slider-container img.active {
+    opacity: 1;
+}
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    z-index: 10;
+}
+.slider-prev, .slider-next {
+    background: rgba(0,0,0,0.4);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2em;
+    transition: background 0.3s;
+}
+.slider-prev:hover, .slider-next:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+/* Таймлайн и карточки */
+.timeline, .persons-grid, .consequences-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.timeline-item, .person-card, .consequence-card, .timeline-item-preview {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.timeline-item.show, .person-card.show, .consequence-card.show, .timeline-item-preview.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.timeline-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #555;
+}
+.timeline-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.event-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* Карточки персон */
+.persons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.person-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.person-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.person-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+}
+h3 {
+    margin-top: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+}
+p {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Последствия */
+.consequences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.consequence-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.consequence-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.icon {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+/* Общий стиль для плавных эффектов */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    .text-content, .image-slider {
+        flex: 1 1 100%;
+    }
+}
